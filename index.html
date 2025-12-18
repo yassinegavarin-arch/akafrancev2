@@ -1,12 +1,1392 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>AKA Industrial Group – France</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKA France | Alliance of Knowledge & Accuracy</title>
+    <meta name="description" content="AKA France - Votre partenaire industriel franco-chinois. Mécanosoudure, usinage, injection plastique, assemblage. 30 ans d'expertise.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --aka-red: #c41e24;
+            --aka-brown: #4a3728;
+            --aka-brown-light: #6b5344;
+            --cream: #faf8f5;
+            --cream-dark: #f0ebe4;
+            --text-dark: #2d2a26;
+            --text-light: #5c5752;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(74, 55, 40, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--aka-brown);
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--aka-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--aka-red);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--aka-brown);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(196, 30, 36, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 0 3rem;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-logo {
+            max-width: 280px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--aka-brown);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--aka-red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #a8191e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 30, 36, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--aka-brown);
+            border: 1px solid var(--aka-brown);
+        }
+
+        .btn-secondary:hover {
+            background: var(--aka-brown);
+            color: var(--white);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--aka-brown-light);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 7rem 3rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--aka-red);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--aka-brown);
+        }
+
+        /* À Propos */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--cream-dark) 0%, var(--cream) 100%);
+            aspect-ratio: 4/3;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '精知';
+            font-size: 8rem;
+            color: var(--aka-red);
+            opacity: 0.08;
+            font-family: serif;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--aka-red);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .experience-badge .number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .experience-badge .text {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--aka-brown);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--aka-red);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 10px;
+            height: 10px;
+            stroke: var(--white);
+            stroke-width: 3;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        /* Services */
+        .services {
+            background: var(--cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--aka-red);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(74, 55, 40, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--cream);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--aka-brown);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--aka-brown);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Organisation */
+        .organisation {
+            background: var(--aka-brown);
+            color: var(--white);
+        }
+
+        .organisation .section-label {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .organisation .section-title {
+            color: var(--white);
+        }
+
+        .org-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .org-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 3rem;
+        }
+
+        .org-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .org-flag {
+            font-size: 2rem;
+        }
+
+        .org-card h3 {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .org-card h4 {
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        .org-details {
+            list-style: none;
+        }
+
+        .org-details li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .org-details li:last-child {
+            border-bottom: none;
+        }
+
+        .org-details .label {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .org-details .value {
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        /* Qualité */
+        .quality {
+            background: var(--white);
+        }
+
+        .quality-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .quality-text h2 {
+            font-size: 2.5rem;
+            color: var(--aka-brown);
+            margin-bottom: 1.5rem;
+        }
+
+        .quality-text p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .certifications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .cert-badge {
+            background: var(--cream);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--aka-brown);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cert-badge.active {
+            background: var(--aka-red);
+            color: var(--white);
+        }
+
+        .cert-badge.pending {
+            background: var(--cream-dark);
+            color: var(--text-light);
+        }
+
+        .quality-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .quality-feature {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .quality-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .quality-feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--aka-red);
+        }
+
+        .quality-feature h4 {
+            font-size: 1.1rem;
+            color: var(--aka-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .quality-feature p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--cream);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            color: var(--aka-brown);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--aka-red);
+        }
+
+        .contact-text .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-text .value {
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--aka-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--cream-dark);
+            border-radius: 4px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--aka-red);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand img {
+            height: 40px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--cream);
+            z-index: 999;
+            padding: 6rem 3rem 3rem;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-menu a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--aka-brown);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .quality-content,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .org-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content {
+                padding: 0 1.5rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-cta .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .quality-features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .experience-badge {
+                right: 10px;
+                bottom: -10px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>AKA Industrial Group – France</h1>
-  <p>Site en construction.</p>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <img src="images/logo-aka.png" alt="AKA France" class="logo">
+            <ul class="nav-links">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#services">Savoir-faire</a></li>
+                <li><a href="#organisation">Organisation</a></li>
+                <li><a href="#quality">Qualité</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#about" onclick="toggleMenu()">À propos</a></li>
+            <li><a href="#services" onclick="toggleMenu()">Savoir-faire</a></li>
+            <li><a href="#organisation" onclick="toggleMenu()">Organisation</a></li>
+            <li><a href="#quality" onclick="toggleMenu()">Qualité</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="images/logo-aka.png" alt="AKA France - Alliance of Knowledge & Accuracy" class="hero-logo">
+            <h1>Votre partenaire industriel<br>entre l'Europe et la Chine</h1>
+            <p class="hero-subtitle">
+                Interface technique, qualité et industrielle depuis 30 ans. Nous transformons vos projets en réalité industrielle avec précision et fiabilité.
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                <a href="#services" class="btn btn-secondary">Découvrir nos services</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- À Propos -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-image"></div>
+                    <div class="experience-badge">
+                        <div class="number">30</div>
+                        <div class="text">ans d'expertise</div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2>Alliance of Knowledge & Accuracy</h2>
+                    <p>
+                        AKA France est bien plus qu'un simple intermédiaire : nous sommes le pont industriel entre les exigences européennes les plus strictes et les capacités de production chinoises.
+                    </p>
+                    <p>
+                        Basés à Nantes, nous accompagnons nos clients de la conception à la livraison, en garantissant la maîtrise totale de la chaîne industrielle. Notre connaissance approfondie des usines et notre présence sur le terrain assurent qualité, traçabilité et réactivité.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span>Maîtrise des usines</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span>Compréhension produit</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span>Sécurisation des flux</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span>Traçabilité complète</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-label">Savoir-faire</p>
+                <h2 class="section-title">Nos métiers industriels</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3>Mécanosoudure</h3>
+                    <p>Fabrication de structures métalliques et assemblages soudés en acier. Capacité de production en série avec contrôle qualité rigoureux.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                    </div>
+                    <h3>Usinage</h3>
+                    <p>Usinage de précision pour pièces mécaniques. Tournage, fraisage et rectification selon vos spécifications techniques.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 9h18M9 21V9"/>
+                        </svg>
+                    </div>
+                    <h3>Injection plastique</h3>
+                    <p>Production de pièces plastiques par injection. Outillages et moules sur mesure, séries moyennes et grandes.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3>Peinture industrielle</h3>
+                    <p>Traitements de surface et finitions peinture. Revêtements anticorrosion et esthétiques selon cahier des charges.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Assemblage</h3>
+                    <p>Montage et assemblage de sous-ensembles et produits finis. Kitting, conditionnement et préparation logistique.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Stockage & Logistique</h3>
+                    <p>Solutions de stockage en Chine et en France. Gestion des flux et livraisons selon vos besoins.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organisation -->
+    <section class="organisation" id="organisation">
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-label">Notre organisation</p>
+                <h2 class="section-title">Deux continents, une vision</h2>
+            </div>
+            <div class="org-grid">
+                <div class="org-card">
+                    <div class="org-card-header">
+                        <span class="org-flag">🇫🇷</span>
+                        <div>
+                            <h3>AKA France</h3>
+                            <h4>Siège social — Nantes</h4>
+                        </div>
+                    </div>
+                    <ul class="org-details">
+                        <li>
+                            <span class="label">Équipe</span>
+                            <span class="value">5 collaborateurs</span>
+                        </li>
+                        <li>
+                            <span class="label">Chiffre d'affaires</span>
+                            <span class="value">~10 M€</span>
+                        </li>
+                        <li>
+                            <span class="label">Rôle commercial</span>
+                            <span class="value">Arnaud Nael & Yassine Gavarin</span>
+                        </li>
+                        <li>
+                            <span class="label">Pilotage client</span>
+                            <span class="value">Coordination technique & qualité</span>
+                        </li>
+                        <li>
+                            <span class="label">Logistique</span>
+                            <span class="value">Gestion des flux Europe</span>
+                        </li>
+                        <li>
+                            <span class="label">Direction</span>
+                            <span class="value">Jean-Pierre Flechet, Président</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="org-card">
+                    <div class="org-card-header">
+                        <span class="org-flag">🇨🇳</span>
+                        <div>
+                            <h3>AKA China</h3>
+                            <h4>Structure opérationnelle</h4>
+                        </div>
+                    </div>
+                    <ul class="org-details">
+                        <li>
+                            <span class="label">Sites industriels</span>
+                            <span class="value">3 usines partenaires</span>
+                        </li>
+                        <li>
+                            <span class="label">Site 1 — Cixi</span>
+                            <span class="value">Mécanosoudure & Usinage</span>
+                        </li>
+                        <li>
+                            <span class="label">Site 2 — Cixi</span>
+                            <span class="value">Injection plastique</span>
+                        </li>
+                        <li>
+                            <span class="label">Site 3 — Cixi</span>
+                            <span class="value">Montage & Peinture</span>
+                        </li>
+                        <li>
+                            <span class="label">Outil de pilotage</span>
+                            <span class="value">LARK (Usine 4.0)</span>
+                        </li>
+                        <li>
+                            <span class="label">Partenariat</span>
+                            <span class="value">30 ans de collaboration</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualité -->
+    <section class="quality" id="quality">
+        <div class="section-container">
+            <div class="quality-content">
+                <div class="quality-text">
+                    <p class="section-label">Engagement qualité</p>
+                    <h2>Des standards européens, une production asiatique</h2>
+                    <p>
+                        Notre engagement : rendre nos usines auditables par les clients européens les plus exigeants. Nous structurons nos processus sans sacrifier l'agilité qui fait notre force.
+                    </p>
+                    <p>
+                        Traçabilité matière, ITP, FAI, MOE... Nous formalisons chaque étape pour garantir la conformité de vos produits aux exigences réglementaires européennes.
+                    </p>
+                    <div class="certifications">
+                        <span class="cert-badge active">ISO 9001</span>
+                        <span class="cert-badge active">ISO 14001</span>
+                        <span class="cert-badge pending">EcoVadis (en cours)</span>
+                    </div>
+                </div>
+                <div class="quality-features">
+                    <div class="quality-feature">
+                        <div class="quality-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 11l3 3L22 4"/>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                            </svg>
+                        </div>
+                        <h4>Traçabilité</h4>
+                        <p>Suivi matière et production via LARK</p>
+                    </div>
+                    <div class="quality-feature">
+                        <div class="quality-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                        </div>
+                        <h4>Documentation</h4>
+                        <p>ITP, FAI, MOE formalisés</p>
+                    </div>
+                    <div class="quality-feature">
+                        <div class="quality-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <h4>Réactivité</h4>
+                        <p>Échantillons rapides, production agile</p>
+                    </div>
+                    <div class="quality-feature">
+                        <div class="quality-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h4>Conformité</h4>
+                        <p>Standards européens respectés</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <p class="section-label">Contact</p>
+                    <h2>Parlons de votre projet</h2>
+                    <p>
+                        Vous avez un projet industriel ? Nos équipes sont à votre écoute pour étudier vos besoins et vous proposer une solution sur mesure.
+                    </p>
+                    <ul class="contact-details">
+                        <li>
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <p class="label">Adresse</p>
+                                <p class="value">Nantes, France</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <p class="label">Email</p>
+                                <p class="value">contact@aka-france.com</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <p class="label">Téléphone</p>
+                                <p class="value">+33 (0)2 XX XX XX XX</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Entreprise</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/logo-aka.png" alt="AKA France">
+                <p>Alliance of Knowledge & Accuracy. Votre partenaire industriel franco-chinois depuis 30 ans.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#services">Savoir-faire</a></li>
+                    <li><a href="#organisation">Organisation</a></li>
+                    <li><a href="#quality">Qualité</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:contact@aka-france.com">contact@aka-france.com</a></li>
+                    <li><a href="#contact">Formulaire de contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AKA France. Tous droits réservés.</p>
+            <p>Mentions légales</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Smooth reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Reset hero section visibility
+        document.querySelector('.hero').style.opacity = '1';
+        document.querySelector('.hero').style.transform = 'none';
+    </script>
 </body>
 </html>
