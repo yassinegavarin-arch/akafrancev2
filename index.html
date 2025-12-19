@@ -134,7 +134,9 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            background: linear-gradient(135deg, rgba(250, 248, 245, 0.85) 0%, rgba(240, 235, 228, 0.85) 100%), url('image1.jpg');
+            background-size: cover;
+            background-position: center;
             overflow: hidden;
         }
 
@@ -307,10 +309,12 @@
             overflow: hidden;
         }
 
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .about-image::before {
+            content: '精知';
+            font-size: 8rem;
+            color: var(--aka-red);
+            opacity: 0.08;
+            font-family: serif;
         }
 
         .experience-badge {
@@ -969,9 +973,7 @@
         <div class="section-container">
             <div class="about-grid">
                 <div class="about-visual">
-                    <div class="about-image">
-                        <img src="image1.jpg" alt="AKA France - Production industrielle">
-                    </div>
+                    <div class="about-image"></div>
                     <div class="experience-badge">
                         <div class="number">30</div>
                         <div class="text">ans d'expertise</div>
@@ -1276,7 +1278,7 @@
                             </div>
                             <div class="contact-text">
                                 <p class="label">Email</p>
-                                <p class="value">contact@aka-france.com</p>
+                                <p class="value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4a2925243e2b293e0a2b212b672c382b24292f64292527">[email&#160;protected]</a></p>
                             </div>
                         </li>
                         <li>
@@ -1334,7 +1336,7 @@
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="mailto:contact@aka-france.com">contact@aka-france.com</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#ea8985849e8b899eaa8b818bc78c988b84898fc4898587"><span class="__cf_email__" data-cfemail="a5c6cacbd1c4c6d1e5c4cec488c3d7c4cbc6c08bc6cac8">[email&#160;protected]</span></a></li>
                     <li><a href="#contact">Formulaire de contact</a></li>
                 </ul>
             </div>
@@ -1345,7 +1347,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Navigation scroll effect
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');
@@ -1379,14 +1381,4 @@
 
         document.querySelectorAll('section').forEach(section => {
             section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
-        });
-
-        // Reset hero section visibility
-        document.querySelector('.hero').style.opacity = '1';
-        document.querySelector('.hero').style.transform = 'none';
-    </script>
-</body>
-</html>
+            sec
